@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-  <meta name="description" content="Wedding invitation of Muhammed Nihad & Fathimathul Ansiya – 31 May 2026" />
-  <title>Roshan & Sana — Wedding Invitation</title>
+  <meta name="description" content="Wedding invitation of Shinas & Fathima Rinshi – 22 November 2026" />
+  <title>Shinas & Fathima Rinshi — Wedding Invitation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Amiri:wght@400;700&family=Jost:wght@300;400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Amiri:wght@400;700&family=Jost:wght@300;400;500;600&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -18,18 +18,65 @@
 
   <!-- ── 3D DOORS OPENING ── -->
   <div id="door-container" class="door-container">
+    <!-- Soft Center Lighting Vignette -->
+    <div class="door-vignette" aria-hidden="true"></div>
+
+    <!-- Horizontal Silk Ribbon -->
+    <div class="door-ribbon" aria-hidden="true">
+      <div class="ribbon-line top"></div>
+      <div class="ribbon-line bottom"></div>
+    </div>
+
+    <!-- Left Door Panel -->
     <div class="door door-left">
-      <div class="door-inner"></div>
-      <div class="door-monogram monogram-left">N</div>
+      <div class="door-inner">
+        <svg class="door-corner-svg top-l" viewBox="0 0 40 40" fill="none" stroke="currentColor">
+          <path d="M0 0 H40 V40" stroke="var(--gold-primary)" stroke-width="1.2"/>
+          <path d="M6 6 H34 V34" stroke="rgba(201, 143, 150, 0.5)" stroke-width="0.8"/>
+          <circle cx="12" cy="12" r="2.5" fill="var(--rose-rich)"/>
+        </svg>
+        <svg class="door-corner-svg bottom-l" viewBox="0 0 40 40" fill="none" stroke="currentColor">
+          <path d="M0 40 H40 V0" stroke="var(--gold-primary)" stroke-width="1.2"/>
+          <path d="M6 34 H34 V6" stroke="rgba(201, 143, 150, 0.5)" stroke-width="0.8"/>
+          <circle cx="12" cy="28" r="2.5" fill="var(--rose-rich)"/>
+        </svg>
+        <div class="door-paper-pattern"></div>
+      </div>
+      <div class="door-monogram monogram-left">S</div>
     </div>
+
+    <!-- Right Door Panel -->
     <div class="door door-right">
-      <div class="door-inner"></div>
-      <div class="door-monogram monogram-right">A</div>
+      <div class="door-inner">
+        <svg class="door-corner-svg top-r" viewBox="0 0 40 40" fill="none" stroke="currentColor">
+          <path d="M40 0 H0 V40" stroke="var(--gold-primary)" stroke-width="1.2"/>
+          <path d="M34 6 H6 V34" stroke="rgba(201, 143, 150, 0.5)" stroke-width="0.8"/>
+          <circle cx="28" cy="12" r="2.5" fill="var(--rose-rich)"/>
+        </svg>
+        <svg class="door-corner-svg bottom-r" viewBox="0 0 40 40" fill="none" stroke="currentColor">
+          <path d="M40 40 H0 V0" stroke="var(--gold-primary)" stroke-width="1.2"/>
+          <path d="M34 34 H6 V6" stroke="rgba(201, 143, 150, 0.5)" stroke-width="0.8"/>
+          <circle cx="28" cy="28" r="2.5" fill="var(--rose-rich)"/>
+        </svg>
+        <div class="door-paper-pattern"></div>
+      </div>
+      <div class="door-monogram monogram-right">F</div>
     </div>
+
+    <!-- Hero Center Emblem Seal (116px Medallion) -->
     <div class="door-center-seal" id="door-seal">
-      <span class="seal-amp">&amp;</span>
+      <div class="seal-outer-flourish" aria-hidden="true"></div>
+      <div class="seal-inner-ring">
+        <span class="seal-monogram-text">S &amp; F</span>
+      </div>
     </div>
-    <div class="door-tap-hint" id="door-hint">TAP TO OPEN</div>
+
+    <!-- Single-Line TAP TO OPEN Plaque -->
+    <div class="door-tap-hint" id="door-hint">
+      <span class="tap-hint-line">──────</span>
+      <span class="tap-hint-text">TAP TO OPEN</span>
+      <span class="tap-hint-line">──────</span>
+    </div>
   </div>
 
   <!-- High-end Texture Overlay -->
@@ -65,6 +112,16 @@
         <circle cx="50" cy="30" r="2.5" fill="currentColor" />
         <circle cx="30" cy="50" r="2.5" fill="currentColor" />
       </svg>
+      <!-- Drifting Rose Petals -->
+      <svg class="vec petal petal-p1" viewBox="0 0 30 40" fill="none">
+        <path d="M15 2 C24 10 28 24 15 38 C2 24 6 10 15 2Z" fill="currentColor"/>
+      </svg>
+      <svg class="vec petal petal-p2" viewBox="0 0 30 40" fill="none">
+        <path d="M15 2 C24 10 28 24 15 38 C2 24 6 10 15 2Z" fill="currentColor"/>
+      </svg>
+      <svg class="vec petal petal-p3" viewBox="0 0 30 40" fill="none">
+        <path d="M15 2 C24 10 28 24 15 38 C2 24 6 10 15 2Z" fill="currentColor"/>
+      </svg>
     </div>
 
     <!-- ── HERO SECTION ── -->
@@ -81,8 +138,8 @@
         </div>
 
         <div class="names-wrap reveal">
-          <h1 class="shimmer-name">Muhammed Nihad</h1>
-          <p class="arabic-name">محمد نهاد</p>
+          <h1 class="shimmer-name">SHINAS</h1>
+          <p class="arabic-name">شيناس</p>
 
           <div class="ampersand-row">
             <span class="amp-line"></span>
@@ -90,8 +147,8 @@
             <span class="amp-line"></span>
           </div>
 
-          <h1 class="shimmer-name">Fathimathul Ansiya</h1>
-          <p class="arabic-name">فاطمة أنسية</p>
+          <h1 class="shimmer-name">FATHIMA RINSHI</h1>
+          <p class="arabic-name">فاطمة رينشي</p>
         </div>
 
         <div class="hero-divider reveal">
@@ -100,10 +157,23 @@
 
         <p class="hero-invite reveal">"We request the honor of your presence at our wedding ceremony."</p>
 
-        <div class="hero-date reveal">
-          <span class="date-box">SUNDAY</span>
-          <span class="date-main">31 MAY 2026</span>
-          <span class="date-box">11:00 AM</span>
+        <div class="hero-date-container reveal">
+          <div class="hero-date">
+            <span class="date-box">SUNDAY</span>
+            <span class="date-main">22 NOVEMBER 2026</span>
+            <span class="date-box">11:00 AM</span>
+          </div>
+          <button id="add-to-calendar-btn" class="btn-calendar" onclick="addToCalendar()">
+            <svg class="btn-cal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+              <line x1="12" y1="14" x2="12" y2="18"></line>
+              <line x1="10" y1="16" x2="14" y2="16"></line>
+            </svg>
+            <span>Add to Calendar</span>
+          </button>
         </div>
       </div>
     </section>
@@ -132,22 +202,34 @@
       </div>
     </section>
 
-    <!-- ── DETAILS ── -->
+    <!-- ── DETAILS & VENUE PREVIEW ── -->
     <section id="s-details" class="section-details reveal-section">
       <h2 class="section-title">تفاصيل الحفل</h2>
-      <p class="section-label">EVENT DETAILS</p>
+      <p class="section-label">EVENT DETAILS &amp; VENUE</p>
 
       <div class="glass-card details-card">
         <div class="detail-item">
-          <span class="detail-icon">📅</span>
+          <div class="detail-icon-wrap">
+            <svg class="detail-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </div>
           <div>
             <p class="detail-title">Date</p>
-            <p class="detail-text">May 31, 2026 (Sunday)</p>
+            <p class="detail-text">November 22, 2026 (Sunday)</p>
           </div>
         </div>
         <div class="detail-divider"></div>
         <div class="detail-item">
-          <span class="detail-icon">🕐</span>
+          <div class="detail-icon-wrap">
+            <svg class="detail-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
           <div>
             <p class="detail-title">Time</p>
             <p class="detail-text">11:00 AM Onwards</p>
@@ -155,18 +237,53 @@
         </div>
         <div class="detail-divider"></div>
         <div class="detail-item">
-          <span class="detail-icon">📍</span>
+          <div class="detail-icon-wrap">
+            <svg class="detail-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
           <div>
             <p class="detail-title">Venue</p>
-            <p class="detail-text">MALABAR AUDITORIUM</p>
-            <p class="detail-sub">Chundambatta, Kerala</p>
+            <p class="detail-text">WHITE LILIES CONVENTION CENTER</p>
+            <p class="detail-sub">Kodumudi, Kerala</p>
           </div>
+        </div>
+
+        <!-- Venue Preview Container -->
+        <div class="venue-preview-box">
+          <div class="venue-map-illustration" aria-hidden="true">
+            <svg class="venue-map-svg" viewBox="0 0 200 80" fill="none" stroke="currentColor" opacity="0.4">
+              <path d="M10 40 Q 50 10 100 40 T 190 40" stroke-width="1" stroke-dasharray="3 3"/>
+              <circle cx="100" cy="40" r="22" fill="none" stroke-width="1"/>
+              <circle cx="100" cy="40" r="6" fill="currentColor"/>
+            </svg>
+            <div class="venue-pin-badge">
+              <span class="pin-pulse"></span>
+              <svg class="pin-svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+            </div>
+          </div>
+          <p class="venue-preview-label">WHITE LILIES CONVENTION CENTER • KODUMUDI</p>
         </div>
       </div>
 
-      <a href="https://maps.app.goo.gl/TNoNHFs2Y8TKwue86?g_st=iw" target="_blank" class="btn-outline reveal">
-        Get Directions ⊕
+      <a href="https://share.google/c0XipBZ0whcl1r6Ii" target="_blank" class="btn-outline reveal">
+        View Location &amp; Get Directions ⊕
       </a>
+    </section>
+
+    <!-- ── DUA / BLESSINGS SECTION ── -->
+    <section id="s-dua" class="section-dua reveal-section">
+      <div class="dua-card">
+        <p class="arabic-dua">بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</p>
+        <div class="dua-divider">
+          <span class="dua-line"></span><span class="dua-diamond">✦</span><span class="dua-line"></span>
+        </div>
+        <h3 class="dua-heading">"Your duas are the most beautiful gift."</h3>
+        <p class="dua-sub">Please keep us in your prayers as we begin this beautiful journey together.</p>
+      </div>
     </section>
 
     <!-- ── RSVP ── -->
@@ -184,6 +301,20 @@
           <span>Unfortunately, I can't make it</span>
         </button>
       </div>
+
+      <!-- Share Invitation Button -->
+      <div class="share-container">
+        <button id="share-btn" class="btn-share" onclick="shareInvitation()">
+          <svg class="btn-share-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="18" cy="5" r="3"></circle>
+            <circle cx="6" cy="12" r="3"></circle>
+            <circle cx="18" cy="19" r="3"></circle>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+          </svg>
+          <span>Share Invitation</span>
+        </button>
+      </div>
     </section>
 
     <!-- ── FOOTER ── -->
@@ -191,7 +322,7 @@
       <div class="footer-divider"></div>
       <p class="footer-ayah">"And He put between you affection and mercy."</p>
       <p class="footer-ref">Surah Ar-Rum 30:21</p>
-      <p class="footer-names">Nihad & Ansiya • 2026</p>
+      <p class="footer-names">Shinas &amp; Fathima Rinshi • 2026</p>
     </footer>
 
     <!-- ── BACKGROUND MUSIC (Hidden) ── -->
@@ -214,7 +345,12 @@
             <p>Your presence fills our hearts with joy.</p>
             <p>May Allah make this day blessed for all.</p>
           </div>
-          <button class="modal-action-btn" onclick="closeModal()">JAZAKALLAH KHAIR</button>
+          <div class="modal-actions">
+            <a href="https://wa.me/917510976760?text=Assalamu%20Alaikum%2C%20InshaAllah%20I%20will%20be%20attending%20the%20wedding%20of%20Shinas%20%26%20Fathima%20Rinshi%20on%20November%2022%2C%202026." target="_blank" class="modal-action-btn modal-whatsapp-btn">
+              <span>CONFIRM VIA WHATSAPP</span>
+            </a>
+            <button class="modal-action-btn modal-close-btn" onclick="closeModal()">JAZAKALLAH KHAIR</button>
+          </div>
         </div>
 
         <!-- Content for NO -->
@@ -233,6 +369,26 @@
     </div>
 
   </main>
+
+  <!-- ── FLOATING MUSIC CONTROL BUTTON ── -->
+  <button id="music-toggle-btn" class="floating-music-btn" onclick="toggleMusic(event)" aria-label="Play or Pause Background Music" title="Background Music">
+    <svg class="music-icon-note" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M9 18V5l12-2v13"></path>
+      <circle cx="6" cy="18" r="3"></circle>
+      <circle cx="18" cy="16" r="3"></circle>
+    </svg>
+    <span class="music-waves" aria-hidden="true">
+      <span class="wave w1"></span>
+      <span class="wave w2"></span>
+      <span class="wave w3"></span>
+    </span>
+  </button>
+
+  <!-- ── TOAST NOTIFICATION ── -->
+  <div id="toast-notif" class="toast-notification hidden" role="status" aria-live="polite">
+    <span id="toast-msg">Invitation link copied.</span>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script src="script.js"></script>
 </body>

@@ -1,7 +1,7 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const WEDDING_DATE = new Date('2026-05-31T11:00:00+05:30').getTime();
+    const WEDDING_DATE = new Date('2026-11-22T11:00:00+05:30').getTime();
 
     // 🎉 CONFETTI FUNCTION
     function fireConfetti() {
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 angle: 60,
                 spread: 70,
                 origin: { x: 0 },
-                colors: ['#d4af37', '#f5d876', '#ffffff']
+                colors: ['#D4AF37', '#C5A059', '#C98F96', '#E4BFC1', '#ffffff']
             });
 
             confetti({
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 angle: 120,
                 spread: 70,
                 origin: { x: 1 },
-                colors: ['#d4af37', '#f5d876', '#ffffff']
+                colors: ['#D4AF37', '#C5A059', '#C98F96', '#E4BFC1', '#ffffff']
             });
 
             if (Date.now() < end) {
@@ -42,35 +42,62 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 2. GOLD DUST PARTICLES
+    // 2. ATMOSPHERE PARTICLES (Champagne Gold Sparkles + Translucent Dusty-Rose Bubbles)
     const canvas = document.getElementById('hero-dust');
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas ? canvas.getContext('2d') : null;
     let particles = [];
 
     function initParticles() {
+        if (!canvas) return;
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         particles = [];
-        for (let i = 0; i < 80; i++) {
+
+        // Reduce count on mobile screens to ensure lightweight rendering and keep text 100% readable
+        const count = window.innerWidth < 768 ? 24 : 46;
+
+        for (let i = 0; i < count; i++) {
+            const isBubble = Math.random() > 0.55;
             particles.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                r: Math.random() * 1.5 + 0.5,
-                d: Math.random() * 0.5 + 0.2
+                r: isBubble ? Math.random() * 2.8 + 1.8 : Math.random() * 1.2 + 0.5,
+                d: Math.random() * 0.3 + 0.12,
+                isBubble: isBubble,
+                sway: Math.random() * Math.PI * 2,
+                swaySpeed: Math.random() * 0.015 + 0.005
             });
         }
     }
 
     function drawParticles() {
+        if (!canvas || !ctx) return;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = 'rgba(212, 175, 55, 0.3)';
+
         particles.forEach(p => {
+            p.sway += p.swaySpeed;
+            const currentX = p.x + Math.sin(p.sway) * (p.isBubble ? 14 : 6);
+
             ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fill();
+            if (p.isBubble) {
+                // Soft translucent dusty-rose bubble
+                ctx.fillStyle = 'rgba(201, 143, 150, 0.15)';
+                ctx.arc(currentX, p.y, p.r, 0, Math.PI * 2);
+                ctx.fill();
+            } else {
+                // Tiny champagne-gold sparkle
+                ctx.fillStyle = 'rgba(197, 160, 89, 0.4)';
+                ctx.arc(currentX, p.y, p.r, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
             p.y -= p.d;
-            if (p.y < 0) p.y = canvas.height;
+            if (p.y < -10) {
+                p.y = canvas.height + 10;
+                p.x = Math.random() * canvas.width;
+            }
         });
+
         requestAnimationFrame(drawParticles);
     }
 
@@ -84,10 +111,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const s = Math.floor((diff % (1000 * 60)) / 1000);
 
-        document.getElementById('cd-d').textContent = String(d).padStart(2, '0');
-        document.getElementById('cd-h').textContent = String(h).padStart(2, '0');
-        document.getElementById('cd-m').textContent = String(m).padStart(2, '0');
-        document.getElementById('cd-s').textContent = String(s).padStart(2, '0');
+        const elD = document.getElementById('cd-d');
+        const elH = document.getElementById('cd-h');
+        const elM = document.getElementById('cd-m');
+        const elS = document.getElementById('cd-s');
+
+        if (elD) elD.textContent = String(d).padStart(2, '0');
+        if (elH) elH.textContent = String(h).padStart(2, '0');
+        if (elM) elM.textContent = String(m).padStart(2, '0');
+        if (elS) elS.textContent = String(s).padStart(2, '0');
     }
 
     // 4. SCROLL REVEAL
@@ -101,18 +133,148 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.reveal, .reveal-section').forEach(el => revealObserver.observe(el));
 
-    // 5. RSVP + MODAL LOGIC
+    // 5. TOAST NOTIFICATION UTILITY
+    window.showToast = function(message) {
+        const toast = document.getElementById('toast-notif');
+        const toastMsg = document.getElementById('toast-msg');
+        if (!toast) return;
+
+        if (toastMsg) toastMsg.textContent = message;
+        toast.classList.remove('hidden');
+
+        setTimeout(() => {
+            toast.classList.add('hidden');
+        }, 3200);
+    };
+
+    // 6. ADD TO CALENDAR (.ics & Google Calendar)
+    window.addToCalendar = function() {
+        const title = 'Shinas & Fathima Rinshi — Wedding';
+        const details = 'Wedding Ceremony of Shinas & Fathima Rinshi';
+        const location = 'White Lilies Convention Center, Kodumudi, Kerala';
+        const startDate = '20261122T110000';
+        const endDate = '20261122T150000';
+
+        // Google Calendar URL
+        const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
+
+        // iCal .ics data URI fallback
+        const icsData = [
+            'BEGIN:VCALENDAR',
+            'VERSION:2.0',
+            'PRODID:-//Shinas & Fathima Rinshi Wedding//EN',
+            'BEGIN:VEVENT',
+            `SUMMARY:${title}`,
+            `DESCRIPTION:${details}`,
+            `LOCATION:${location}`,
+            `DTSTART:${startDate}`,
+            `DTEND:${endDate}`,
+            'END:VEVENT',
+            'END:VCALENDAR'
+        ].join('\n');
+
+        // Trigger Google Calendar in new tab
+        window.open(googleUrl, '_blank');
+
+        // Also download .ics for iOS/Outlook/Apple Calendar
+        try {
+            const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.setAttribute('download', 'wedding-event.ics');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } catch (e) {
+            console.error('ICS download fallback error:', e);
+        }
+
+        showToast('Wedding added to calendar!');
+    };
+
+    // 7. FLOATING MUSIC TOGGLE
+    window.toggleMusic = function(e) {
+        if (e) e.stopPropagation();
+        const audio = document.getElementById('bg-music');
+        const musicBtn = document.getElementById('music-toggle-btn');
+        if (!audio) return;
+
+        if (audio.paused) {
+            audio.volume = 0;
+            audio.play().then(() => {
+                let vol = 0;
+                const fadeIn = setInterval(() => {
+                    vol += 0.08;
+                    if (vol >= 1) {
+                        vol = 1;
+                        clearInterval(fadeIn);
+                    }
+                    audio.volume = vol;
+                }, 100);
+                if (musicBtn) musicBtn.classList.add('playing');
+                showToast('Playing background music');
+            }).catch(() => {
+                showToast('Tap to play music');
+            });
+        } else {
+            let vol = audio.volume;
+            const fadeOut = setInterval(() => {
+                vol -= 0.08;
+                if (vol <= 0) {
+                    audio.pause();
+                    audio.volume = 1;
+                    clearInterval(fadeOut);
+                    if (musicBtn) musicBtn.classList.remove('playing');
+                    showToast('Music paused');
+                } else {
+                    audio.volume = vol;
+                }
+            }, 100);
+        }
+    };
+
+    // 8. SHARE INVITATION (Web Share API + Clipboard Fallback)
+    window.shareInvitation = function() {
+        const shareData = {
+            title: 'Shinas & Fathima Rinshi — Wedding Invitation',
+            text: 'You are warmly invited to celebrate the wedding of Shinas & Fathima Rinshi.',
+            url: window.location.href
+        };
+
+        if (navigator.share) {
+            navigator.share(shareData).catch(() => {
+                copyLinkFallback();
+            });
+        } else {
+            copyLinkFallback();
+        }
+
+        function copyLinkFallback() {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    showToast('Invitation link copied.');
+                }).catch(() => {
+                    showToast('Link: ' + window.location.href);
+                });
+            } else {
+                showToast('Link: ' + window.location.href);
+            }
+        }
+    };
+
+    // 9. RSVP + MODAL LOGIC
     window.handleRSVP = function(choice) {
         const modal = document.getElementById('rsvp-modal');
         const bodyYes = document.getElementById('modal-body-yes');
         const bodyNo = document.getElementById('modal-body-no');
         const audio = document.getElementById('bg-music');
+        const musicBtn = document.getElementById('music-toggle-btn');
 
-        bodyYes.classList.add('hidden');
-        bodyNo.classList.add('hidden');
+        if (bodyYes) bodyYes.classList.add('hidden');
+        if (bodyNo) bodyNo.classList.add('hidden');
 
         if (choice === 'yes') {
-            bodyYes.classList.remove('hidden');
+            if (bodyYes) bodyYes.classList.remove('hidden');
 
             // 🎉 CONFETTI ON YES CLICK
             fireConfetti();
@@ -130,23 +292,27 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                         audio.volume = vol;
                     }, 100);
+                    if (musicBtn) musicBtn.classList.add('playing');
                 }).catch(() => {});
             }
 
         } else {
-            bodyNo.classList.remove('hidden');
+            if (bodyNo) bodyNo.classList.remove('hidden');
         }
 
-        modal.classList.remove('hidden');
-        modal.classList.add('active');
+        if (modal) {
+            modal.classList.remove('hidden');
+            modal.classList.add('active');
+        }
     };
 
     // CLOSE MODAL + STOP MUSIC
     window.closeModal = function() {
         const modal = document.getElementById('rsvp-modal');
         const audio = document.getElementById('bg-music');
+        const musicBtn = document.getElementById('music-toggle-btn');
 
-        modal.classList.remove('active');
+        if (modal) modal.classList.remove('active');
 
         if (audio && !audio.paused) {
             let vol = audio.volume;
@@ -157,6 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     audio.currentTime = 0;
                     audio.volume = 1;
                     clearInterval(fadeOut);
+                    if (musicBtn) musicBtn.classList.remove('playing');
                 } else {
                     audio.volume = vol;
                 }
@@ -164,7 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         setTimeout(() => {
-            modal.classList.add('hidden');
+            if (modal) modal.classList.add('hidden');
         }, 400);
     };
 
@@ -194,7 +361,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const doorContainer = document.getElementById('door-container');
     let doorsOpened = false;
 
-    function openDoors() {
+    window.openDoors = function() {
         if (doorsOpened) return;
         doorsOpened = true;
         
@@ -209,15 +376,15 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             fireConfetti();
         }, 700);
-    }
+    };
 
     if (doorContainer) {
         // Open on click/tap
-        doorContainer.addEventListener('click', openDoors);
+        doorContainer.addEventListener('click', window.openDoors);
         
         // Auto open after 50 seconds
         setTimeout(() => {
-            openDoors();
+            window.openDoors();
         }, 50000);
     }
 });
