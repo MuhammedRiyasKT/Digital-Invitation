@@ -217,41 +217,15 @@ body::before {
   overflow: hidden;
 }
 
-/* Soft Center Lighting Vignette */
-.door-vignette {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 45%, rgba(255, 253, 251, 0.95) 0%, rgba(247, 235, 235, 0.6) 70%, rgba(45, 28, 31, 0.4) 100%);
-  pointer-events: none;
-  z-index: 1;
+/* Hide duplicate HTML overlays so door-bg.png artwork displays cleanly */
+.door-vignette,
+.door-ribbon,
+.door-inner,
+.door-monogram,
+.door-center-seal,
+.door-tap-hint {
+  display: none !important;
 }
-
-/* Horizontal Silk Ribbon */
-.door-ribbon {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 20px;
-  transform: translateY(-50%);
-  background: linear-gradient(90deg, rgba(228, 191, 193, 0.4) 0%, rgba(201, 143, 150, 0.85) 50%, rgba(228, 191, 193, 0.4) 100%);
-  z-index: 2;
-  pointer-events: none;
-  border-top: 1.5px solid var(--gold-primary);
-  border-bottom: 1.5px solid var(--gold-primary);
-  box-shadow: 0 4px 15px rgba(58, 36, 40, 0.14);
-  transition: opacity 0.6s ease;
-}
-
-.door-ribbon .ribbon-line {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: rgba(255, 253, 251, 0.6);
-}
-.door-ribbon .ribbon-line.top { top: 3px; }
-.door-ribbon .ribbon-line.bottom { bottom: 3px; }
 
 .door {
   width: 50%;
@@ -266,169 +240,19 @@ body::before {
 .door-left {
   transform-origin: left center;
   border-right: 1.5px solid var(--gold-primary);
-  background: linear-gradient(135deg, #FCF7F4 0%, #FAF3EE 60%, #F5ECE8 100%);
+  background-image: url('door-bg.png');
+  background-size: 200% 100%;
+  background-position: left center;
+  background-repeat: no-repeat;
 }
 
 .door-right {
   transform-origin: right center;
   border-left: 1.5px solid var(--gold-primary);
-  background: linear-gradient(225deg, #FCF7F4 0%, #FAF3EE 60%, #F5ECE8 100%);
-}
-
-.door-inner {
-  position: absolute;
-  inset: 22px;
-  border: 1.5px solid var(--gold-primary);
-  opacity: 0.9;
-  pointer-events: none;
-  border-radius: 4px;
-  box-shadow: inset 0 0 30px rgba(201, 143, 150, 0.08);
-}
-
-.door-inner::after {
-  content: '';
-  position: absolute;
-  inset: 6px;
-  border: 1px stroke rgba(201, 143, 150, 0.45);
-  pointer-events: none;
-}
-
-.door-left .door-inner { border-right: none; }
-.door-right .door-inner { border-left: none; }
-
-.door-paper-pattern {
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle at 50% 50%, rgba(201, 143, 150, 0.06) 0%, transparent 60%);
-  pointer-events: none;
-}
-
-/* Corner Ornaments filigree */
-.door-corner-svg {
-  position: absolute;
-  width: 36px;
-  height: 36px;
-  opacity: 0.85;
-}
-
-.top-l { top: 6px; left: 6px; }
-.bottom-l { bottom: 6px; left: 6px; }
-.top-r { top: 6px; right: 6px; }
-.bottom-r { bottom: 6px; right: 6px; }
-
-.door-monogram {
-  font-family: var(--ff-dp);
-  font-style: italic;
-  font-weight: 700;
-  font-size: clamp(5rem, 18vw, 12rem);
-  position: absolute;
-  top: 48%;
-  transform: translateY(-50%);
-  background: var(--shimmer-gold);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 4px 15px rgba(201, 143, 150, 0.35));
-  opacity: 0.88;
-}
-
-.monogram-left { right: 12%; }
-.monogram-right { left: 12%; }
-
-/* Hero Center Emblem Medallion Seal (116px Medallion) */
-.door-center-seal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 116px;
-  height: 116px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #FFFDFB 0%, #FAF3EE 50%, #F7EBEB 100%);
-  border: 2.5px solid var(--gold-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 12px 35px rgba(58, 36, 40, 0.3), inset 0 0 16px rgba(201, 143, 150, 0.28);
-  z-index: 4;
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.seal-outer-flourish {
-  position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-  border: 1px dashed rgba(197, 160, 89, 0.5);
-  pointer-events: none;
-  animation: vSpin 40s linear infinite;
-}
-
-.seal-inner-ring {
-  width: 98px;
-  height: 98px;
-  border-radius: 50%;
-  border: 1.5px dashed var(--rose-rich);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: radial-gradient(circle at center, rgba(255, 253, 251, 0.98) 0%, rgba(247, 235, 235, 0.98) 100%);
-  box-shadow: inset 0 0 10px rgba(197, 160, 89, 0.2);
-}
-
-.seal-monogram-text {
-  font-family: var(--ff-dp);
-  font-size: 1.55rem;
-  font-weight: 700;
-  font-style: italic;
-  color: var(--plum-deep);
-  letter-spacing: 2.5px;
-  white-space: nowrap;
-  text-shadow: 0 1px 3px rgba(201, 143, 150, 0.35);
-}
-
-/* Single-Line TAP TO OPEN Plaque */
-.door-tap-hint {
-  position: absolute;
-  bottom: 8.5%;
-  left: 50%;
-  transform: translateX(-50%);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  font-family: var(--ff-ss);
-  color: var(--plum-deep);
-  background: #FFFDFB;
-  border: 1.5px solid var(--rose-rich);
-  border-radius: 50px;
-  padding: 11px 30px;
-  white-space: nowrap !important;
-  z-index: 4;
-  transition: opacity 0.5s ease, transform 0.3s ease;
-  box-shadow: 0 6px 22px rgba(58, 36, 40, 0.14);
-  cursor: pointer;
-  max-width: 92vw;
-}
-
-.tap-hint-text {
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 3.5px;
-  color: var(--plum-deep);
-  text-transform: uppercase;
-  white-space: nowrap !important;
-}
-
-.tap-hint-line {
-  font-size: 0.6rem;
-  color: var(--rose-rich);
-  opacity: 0.65;
-  white-space: nowrap !important;
-}
-
-.door-container:hover .door-tap-hint {
-  border-color: var(--gold-primary);
-  transform: translateX(-50%) scale(1.03);
+  background-image: url('door-bg.png');
+  background-size: 200% 100%;
+  background-position: right center;
+  background-repeat: no-repeat;
 }
 
 /* Door Open Animation Triggers */
@@ -438,28 +262,6 @@ body::before {
 
 .door-container.open .door-right {
   transform: rotateY(105deg);
-}
-
-.door-container.open .door-center-seal {
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(1.4);
-}
-
-.door-container.open .door-tap-hint {
-  opacity: 0;
-}
-
-.door-container.open .door-ribbon {
-  opacity: 0;
-}
-
-.door-container.open .door-arch-top {
-  opacity: 0;
-}
-
-.door-container.open .door-vignette {
-  opacity: 0;
-  transition: opacity 0.6s ease;
 }
 
 .door-container.open {
