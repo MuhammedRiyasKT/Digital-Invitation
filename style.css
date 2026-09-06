@@ -339,7 +339,7 @@ body::before {
 
 .shimmer-name {
   font-family: var(--ff-dp);
-  font-size: clamp(2.4rem, 6.5vw, 4rem);
+  font-size: clamp(1.8rem, 4.8vw, 2.4rem);
   font-weight: 700;
   line-height: 1.15;
   color: var(--plum-deep);
