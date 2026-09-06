@@ -1,7 +1,7 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const WEDDING_DATE = new Date('2026-11-22T11:00:00+05:30').getTime();
+    const WEDDING_DATE = new Date('2026-11-22T10:30:00+05:30').getTime();
 
     // 🎉 CONFETTI FUNCTION
     function fireConfetti() {
@@ -152,8 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const title = 'Shinas & Fathima Rinshi — Wedding';
         const details = 'Wedding Ceremony of Shinas & Fathima Rinshi';
         const location = 'White Lilies Convention Center, Kodumudi, Kerala';
-        const startDate = '20261122T110000';
-        const endDate = '20261122T150000';
+        const startDate = '20261122T103000';
+        const endDate = '20261122T143000';
 
         // Google Calendar URL
         const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
